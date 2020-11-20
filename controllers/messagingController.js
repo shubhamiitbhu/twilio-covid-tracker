@@ -39,7 +39,7 @@ const messagingController = async (req, res, next) => {
 			messagingFuction(message, senderId);
 			break;
 
-		case 'deaths':
+		case 'death':
 		case 'deaths':
 			if (entity === 'total') {
 				const data = await axios.get(`${globalDataEndpoint}`);
