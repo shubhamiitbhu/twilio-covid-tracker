@@ -49,7 +49,7 @@ const messagingController = async (req, res, next) => {
 				try {
 					const data = await axios.get(`${countryWiseDataEndpoint}` + `${entity}`);
 					const casesData = data.data;
-					message = `Total Cases in ${casesData.country}: ${casesData.deaths}, Today: ${casesData.todayDeaths}`;
+					message = `Total Deaths in ${casesData.country}: ${casesData.deaths}, Today: ${casesData.todayDeaths}`;
 				} catch (error) {
 					message = error.message;
 				}
