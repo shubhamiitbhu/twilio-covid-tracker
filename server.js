@@ -12,6 +12,7 @@ const { pollingEntity, validate } = require('./controllers/pollingController.js'
 const PORT = process.env.PORT;
 const pollingInterval = process.env.POLLING_INTERVAL;
 const maximumPollingAttempts = process.env.MAXIMUM_POLLING_ATTEMPTS;
+const intervalBetweenTwoPollingRequest = 10000;
 
 const app = express();
 
@@ -21,7 +22,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', messaging);
 
 const polling = (() => {
-	setInterval(pollingFunction, pollingInterval, pollingEntity, validate, 10000, maximumPollingAttempts);
+	setInterval(
+		pollingFunction,
+		pollingInterval,
+		pollingEntity,
+		validate,
+		intervalBetweenTwoPollingRequest,
+		maximumPollingAttempts,
+	);
 })();
 
 app.listen(PORT, () => {

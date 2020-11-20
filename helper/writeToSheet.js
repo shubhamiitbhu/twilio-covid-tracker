@@ -8,7 +8,7 @@ const doc = new GoogleSpreadsheet(sheetId);
 doc.useServiceAccountAuth(require('../sheetsCredentials.json'));
 
 const addDataToSheet = async () => {
-	var executable = false;
+	var isExecutable = false;
 	try {
 		await doc.loadInfo();
 		const sheet = await doc.sheetsByIndex[0];
@@ -21,12 +21,12 @@ const addDataToSheet = async () => {
 			iterator++;
 			await rows[iterator].save();
 		}
-		executable = true;
+		isExecutable = true;
 	} catch (error) {
 		const errorObject = new Error(error);
 		throw errorObject.message;
 	} finally {
-		return executable;
+		return isExecutable;
 	}
 };
 
