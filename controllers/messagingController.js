@@ -15,6 +15,7 @@ const messagingController = async (req, res, next) => {
 	if (messageContent.length !== 2) {
 		message = 'Query not understood. Please use Case(s) or Death(s) + country name/code only';
 		messagingFuction(message, senderId);
+		return;
 	}
 
 	const intent = messageContent[0].toString();
